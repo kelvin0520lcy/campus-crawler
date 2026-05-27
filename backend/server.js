@@ -20,7 +20,6 @@ server.post('/api/locations', async (req, res) => {
         createdAt: new Date(),
     })
 
-
     return res.status(201).json({
         id: docRef.id,
         name,
