@@ -3,3 +3,4 @@ backend/node_modules/
 backend/.env
 
 .env
+campus-crawler-service-account.json
