@@ -1,5 +1,6 @@
 import express from "express";
 import { db } from "./firebase.js"
+import locationsRoute from "./routes/locationsRoute.js"
 
 const server = express();
 const PORT = 8080;
@@ -27,6 +28,8 @@ server.post('/api/locations', async (req, res) => {
         isOpen,
     });
 })
+
+server.use("/api/locations", locationsRoute);
 
 server.listen(PORT, () => {
     console.log("Server running at ", PORT);
