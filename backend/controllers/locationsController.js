@@ -28,7 +28,6 @@ export async function getLocations(req, res) {
     try {
         const snapshot = await db.collection("locations").get();
 
-        console.log(snapshot);
         const locations = await snapshot.docs.map((doc) => ({
             id: doc.id,
             ...doc.data()
