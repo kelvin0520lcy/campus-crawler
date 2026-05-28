@@ -40,7 +40,7 @@ export async function getLocations(req, res) {
 
     } catch (error) {
         console.error("Error getting locations: ", error);
-        res.statuas(500).json({
+        res.status(500).json({
             error: "Failed to get locations"
         })
     }
