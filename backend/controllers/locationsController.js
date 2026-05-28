@@ -11,7 +11,7 @@ export async function getLocationById(req, res) {
                 error: "Locations not found"
             })
         }
-        res.json({
+        res.status(200).json({
             id: docSnap.id,
             ...docSnap.data(),
         })
@@ -20,6 +20,27 @@ export async function getLocationById(req, res) {
         console.error("Error getting location: ", error);
         res.status(500).json({
             error: "Failed to get location"
+        })
+    }
+}
+
+export async function getLocations(req, res) {
+    try {
+        const docSnap = await db.collection("locations").get();
+
+        const locations = await docSnap.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data()
+        }))
+
+        res.status(200).json({
+            locations
+        })
+
+    } catch (error) {
+        console.error("Error getting locations: ", error);
+        res.statuas(500).json({
+            error: "Failed to get locations"
         })
     }
 }
