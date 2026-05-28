@@ -26,15 +26,16 @@ export async function getLocationById(req, res) {
 
 export async function getLocations(req, res) {
     try {
-        const docSnap = await db.collection("locations").get();
+        const snapshot = await db.collection("locations").get();
 
-        const locations = await docSnap.docs.map((doc) => ({
+        console.log(snapshot);
+        const locations = await snapshot.docs.map((doc) => ({
             id: doc.id,
             ...doc.data()
         }))
 
         res.status(200).json({
-            locations
+            locations,
         })
 
     } catch (error) {
