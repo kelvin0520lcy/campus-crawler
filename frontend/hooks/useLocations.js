@@ -14,9 +14,11 @@ export const useLocations = () => {
             const data = await response.json();
 
             setLocations(data.locations);
-            setLoading(false);
         } catch (error) {
             console.error("Error fetching locations: ", error);
+            setLocations([]);
+        } finally {
+            setLoading(false);
         }
     });
 
