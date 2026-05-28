@@ -2,12 +2,25 @@
 
 import { View, Text, Pressable, StyleSheet } from "react-native";
 import { useAuth } from "../../../context/Auth";
+import MapView from "react-native-maps";
+
 
 export default function HomeScreen() {
   const { user, logout } = useAuth();
 
   return (
     <View style={styles.container}>
+      <MapView
+        style={styles.map}
+        initialRegion={{
+          latitude: 1.2966,
+          longitude: 103.7764,
+          latitudeDelta: 0.01,
+          longitudeDelta: 0.01,
+        }}
+      >
+
+      </MapView>
 
       <View style={styles.overlay}>
         <Text style={styles.title}>Campus Crawlers</Text>
