@@ -1,24 +1,49 @@
-import { View, Text, Pressable, StyleSheet } from "react-native";
+import { View, Text, Pressable, StyleSheet, ScrollView } from "react-native";
 import { useAuth } from "../../../context/Auth";
 import MapView from "react-native-maps";
 import { useLocations } from "../../../hooks/useLocations";
 import { useEffect } from "react";
+import { useState } from "react";
+import Checkbox from "expo-checkbox";
+import { isOpenNow } from "../../../lib/openingHours";
 
 
 export default function HomeScreen() {
   const { user, logout } = useAuth();
   const { locations, loading, error, fetchLocations } = useLocations();
+  const [openNowOnly, setOpenNowOnly] = useState(false);
+  const [selectedCategories, setSelectedCategories] = useState([]);
 
-  useEffect(
-    () => {
-      fetchLocations();
+  useEffect(() => {
+    fetchLocations(openNowOnly);
+  }, []);
+
+  const toggleCategories = (category) => {
+    setSelectedCategories((prev) => {
+      if (prev.includes(category)) {
+        return prev.filter(c => c != category);
+      } else {
+        return [...prev, category];
+      }
+    })
+  }
+
+  const filteredLocations = locations.filter((location) => {
+    if (openNowOnly && !isOpenNow(location)) {
+      return false;
     }
-    , []);
+    if (selectedCategories.length !== 0 &&
+      !selectedCategories.includes(location.category)) {
+      return false;
+    }
+    return true;
+  })
+
 
   if (false) return <Text>Loading...</Text>;
 
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.userSection}>
         <Text style={styles.title}>Campus Crawlers</Text>
         <Text style={styles.label}>You are signed in as:</Text>
@@ -44,20 +69,42 @@ export default function HomeScreen() {
       </MapView>
 
       <Text style={styles.sectionTitle}>Locations: </Text>
+
+      <View style={{ flexDirection: "row", gap: 8 }}>
+        <Checkbox
+          value={openNowOnly}
+          onValueChange={setOpenNowOnly}
+        />
+        <Text>Open Now</Text>
+      </View>
+      <View style={{ flexDirection: "row", gap: 6 }}>
+        <Checkbox
+          value={selectedCategories.includes("food")}
+          onValueChange={() => toggleCategories("food")}
+        />
+        <Text>Food</Text>
+
+        <Checkbox
+          value={selectedCategories.includes("study")}
+          onValueChange={() => toggleCategories("study")}
+        />
+        <Text>Study</Text>
+      </View>
+
       {loading && <Text style={styles.message}>Loading locations</Text>}
       {error && <Text style={styles.error}>Error fetching locations</Text>}
 
       {locations.length === 0 && !loading && !error ? (
         <Text style={styles.message}>No locations found.</Text>
       ) : (
-        <View style={styles.locationList}>
-          {locations.map((location) => (
+        <ScrollView style={styles.locationList}>
+          {filteredLocations.map((location) => (
             <Text key={location.id} style={styles.locationItem}>{location.name}</Text>
           ))}
-        </View>
+        </ScrollView>
       )}
 
-    </View>
+    </ScrollView>
   );
 }
 
