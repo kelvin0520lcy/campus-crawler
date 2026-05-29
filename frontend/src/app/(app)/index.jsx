@@ -12,15 +12,28 @@ export default function HomeScreen() {
   const { user, logout } = useAuth();
   const { locations, loading, error, fetchLocations } = useLocations();
   const [openNowOnly, setOpenNowOnly] = useState(false);
+  const [selectedCategories, setSelectedCategories] = useState([]);
 
-  useEffect(
-    () => {
-      fetchLocations(openNowOnly);
-    }
-    , []);
+  useEffect(() => {
+    fetchLocations(openNowOnly);
+  }, []);
+
+  const toggleCategories = (category) => {
+    setSelectedCategories((prev) => {
+      if (prev.includes(category)) {
+        return prev.filter(c => c != category);
+      } else {
+        return [...prev, category];
+      }
+    })
+  }
 
   const filteredLocations = locations.filter((location) => {
     if (openNowOnly && !isOpenNow(location)) {
+      return false;
+    }
+    if (selectedCategories.length !== 0 &&
+      !selectedCategories.includes(location.category)) {
       return false;
     }
     return true;
@@ -63,6 +76,19 @@ export default function HomeScreen() {
           onValueChange={setOpenNowOnly}
         />
         <Text>Open Now</Text>
+      </View>
+      <View style={{ flexDirection: "row", gap: 6 }}>
+        <Checkbox
+          value={selectedCategories.includes("food")}
+          onValueChange={() => toggleCategories("food")}
+        />
+        <Text>Food</Text>
+
+        <Checkbox
+          value={selectedCategories.includes("study")}
+          onValueChange={() => toggleCategories("study")}
+        />
+        <Text>Study</Text>
       </View>
 
       {loading && <Text style={styles.message}>Loading locations</Text>}
