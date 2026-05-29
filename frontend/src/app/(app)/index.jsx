@@ -1,4 +1,4 @@
-import { View, Text, Pressable, StyleSheet } from "react-native";
+import { View, Text, Pressable, StyleSheet, ScrollView } from "react-native";
 import { useAuth } from "../../../context/Auth";
 import MapView from "react-native-maps";
 import { useLocations } from "../../../hooks/useLocations";
@@ -30,7 +30,7 @@ export default function HomeScreen() {
   if (false) return <Text>Loading...</Text>;
 
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.userSection}>
         <Text style={styles.title}>Campus Crawlers</Text>
         <Text style={styles.label}>You are signed in as:</Text>
@@ -65,22 +65,20 @@ export default function HomeScreen() {
         <Text>Open Now</Text>
       </View>
 
-      {openNowOnly && <Text style={styles.message}>Open !!!!</Text>}
-
       {loading && <Text style={styles.message}>Loading locations</Text>}
       {error && <Text style={styles.error}>Error fetching locations</Text>}
 
       {locations.length === 0 && !loading && !error ? (
         <Text style={styles.message}>No locations found.</Text>
       ) : (
-        <View style={styles.locationList}>
+        <ScrollView style={styles.locationList}>
           {filteredLocations.map((location) => (
             <Text key={location.id} style={styles.locationItem}>{location.name}</Text>
           ))}
-        </View>
+        </ScrollView>
       )}
 
-    </View>
+    </ScrollView>
   );
 }
 
