@@ -3,17 +3,29 @@ import { useAuth } from "../../../context/Auth";
 import MapView from "react-native-maps";
 import { useLocations } from "../../../hooks/useLocations";
 import { useEffect } from "react";
+import { useState } from "react";
+import Checkbox from "expo-checkbox";
+import { isOpenNow } from "../../../lib/openingHours";
 
 
 export default function HomeScreen() {
   const { user, logout } = useAuth();
   const { locations, loading, error, fetchLocations } = useLocations();
+  const [openNowOnly, setOpenNowOnly] = useState(false);
 
   useEffect(
     () => {
-      fetchLocations();
+      fetchLocations(openNowOnly);
     }
     , []);
+
+  const filteredLocations = locations.filter((location) => {
+    if (openNowOnly && !isOpenNow(location)) {
+      return false;
+    }
+    return true;
+  })
+
 
   if (false) return <Text>Loading...</Text>;
 
@@ -44,6 +56,17 @@ export default function HomeScreen() {
       </MapView>
 
       <Text style={styles.sectionTitle}>Locations: </Text>
+
+      <View style={{ flexDirection: "row", gap: 8 }}>
+        <Checkbox
+          value={openNowOnly}
+          onValueChange={setOpenNowOnly}
+        />
+        <Text>Open Now</Text>
+      </View>
+
+      {openNowOnly && <Text style={styles.message}>Open !!!!</Text>}
+
       {loading && <Text style={styles.message}>Loading locations</Text>}
       {error && <Text style={styles.error}>Error fetching locations</Text>}
 
@@ -51,7 +74,7 @@ export default function HomeScreen() {
         <Text style={styles.message}>No locations found.</Text>
       ) : (
         <View style={styles.locationList}>
-          {locations.map((location) => (
+          {filteredLocations.map((location) => (
             <Text key={location.id} style={styles.locationItem}>{location.name}</Text>
           ))}
         </View>
