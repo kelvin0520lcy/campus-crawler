@@ -1,5 +1,3 @@
-// mobile/app/(app)/_layout.jsx
-
 import { Stack, Redirect } from "expo-router";
 import { ActivityIndicator, View } from "react-native";
 import { useAuth } from "../../../context/Auth";
