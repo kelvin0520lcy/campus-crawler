@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import Checkbox from "expo-checkbox";
 import { isOpenNow } from "../../../lib/openingHours";
+import { router } from "expo-router";
 
 
 export default function HomeScreen() {
@@ -43,17 +44,15 @@ export default function HomeScreen() {
   if (false) return <Text>Loading...</Text>;
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <View style={styles.userSection}>
+    <View style={styles.container}>
+      <View style={[styles.header]}>
         <Text style={styles.title}>Campus Crawlers</Text>
-        <Text style={styles.label}>You are signed in as:</Text>
-        <Text style={styles.email}>{user?.email}</Text>
 
-        <Pressable style={styles.button} onPress={logout}>
-          <Text style={styles.buttonText}>Log Out</Text>
+        <Pressable style={styles.button} onPress={() => router.push('/account')}>
+          <Text style={styles.buttonText}>Account</Text>
         </Pressable>
-      </View>
 
+      </View>
       <Text style={styles.sectionTitle}>Map</Text>
 
       <MapView
@@ -70,25 +69,34 @@ export default function HomeScreen() {
 
       <Text style={styles.sectionTitle}>Locations: </Text>
 
-      <View style={{ flexDirection: "row", gap: 8 }}>
-        <Checkbox
-          value={openNowOnly}
-          onValueChange={setOpenNowOnly}
-        />
-        <Text>Open Now</Text>
+      <View style={styles.checkboxContainer}>
+        <View style={styles.checkbox}>
+          <Checkbox
+            value={openNowOnly}
+            onValueChange={setOpenNowOnly}
+          />
+          <Text style={styles.label}>Open Now</Text>
+        </View>
       </View>
-      <View style={{ flexDirection: "row", gap: 6 }}>
-        <Checkbox
-          value={selectedCategories.includes("food")}
-          onValueChange={() => toggleCategories("food")}
-        />
-        <Text>Food</Text>
+      <View style={styles.checkboxContainer}>
+        <Text style={styles.label}>
+          Categories:
+        </Text>
+        <View style={styles.checkbox}>
+          <Checkbox
+            value={selectedCategories.includes("food")}
+            onValueChange={() => toggleCategories("food")}
+          />
+          <Text style={styles.label}>Food</Text>
+        </View>
+        <View style={styles.checkbox}>
+          <Checkbox
+            value={selectedCategories.includes("study")}
+            onValueChange={() => toggleCategories("study")}
+          />
+          <Text style={styles.label}>Study</Text>
+        </View>
 
-        <Checkbox
-          value={selectedCategories.includes("study")}
-          onValueChange={() => toggleCategories("study")}
-        />
-        <Text>Study</Text>
       </View>
 
       {loading && <Text style={styles.message}>Loading locations</Text>}
@@ -104,7 +112,7 @@ export default function HomeScreen() {
         </ScrollView>
       )}
 
-    </ScrollView>
+    </View>
   );
 }
 
@@ -119,15 +127,18 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     marginBottom: 16,
   },
-  userSection: {
+  header: {
     backgroundColor: "white",
-    padding: 14,
+    padding: 5,
     borderRadius: 10,
-    marginBottom: 18,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-start"
+
   },
   label: {
     fontSize: 14,
-    color: "#64748b",
+    color: "#192230",
   },
   email: {
     fontSize: 16,
@@ -136,7 +147,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   button: {
-    backgroundColor: "#ef4444",
+    backgroundColor: "#1469d1",
     paddingVertical: 10,
     paddingHorizontal: 14,
     borderRadius: 8,
@@ -176,4 +187,13 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     marginBottom: 8,
   },
+  checkbox: {
+    flexDirection: "row",
+    gap: 8
+  },
+  checkboxContainer: {
+    flexDirection: "row",
+    gap: 20,
+    padding: 5,
+  }
 });
