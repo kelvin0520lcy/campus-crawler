@@ -14,6 +14,7 @@ export default function HomeScreen() {
   const { locations, loading, error, fetchLocations } = useLocations();
   const [openNowOnly, setOpenNowOnly] = useState(false);
   const [selectedCategories, setSelectedCategories] = useState([]);
+  const [expandedLocation, setExpandedLocation] = useState(null);
 
   useEffect(() => {
     fetchLocations(openNowOnly);
@@ -27,6 +28,14 @@ export default function HomeScreen() {
         return [...prev, category];
       }
     })
+  }
+
+  const toggleLocations = (location) => {
+    if (expandedLocation === location.id) {
+      setExpandedLocation(null);
+    } else {
+      setExpandedLocation(location.id);
+    }
   }
 
   const filteredLocations = locations.filter((location) => {
@@ -106,13 +115,26 @@ export default function HomeScreen() {
         <Text style={styles.message}>No locations found.</Text>
       ) : (
         <ScrollView style={styles.locationList}>
-          {filteredLocations.map((location) => (
-            <Text key={location.id} style={styles.locationItem}>{location.name}</Text>
-          ))}
+          {filteredLocations.map((location) => {
+            const isExpanded = expandedLocation === location.id;
+            return (
+              <Pressable
+                onPress={() => toggleLocations(location)}
+              >
+                <Text style={styles.locationItem}>
+                  {location.name}
+                </Text>
+                {isExpanded && (
+                  <Text style={styles.locationDescription}>{location.description}</Text>
+                )}
+              </Pressable>
+            )
+          })}
         </ScrollView>
-      )}
+      )
+      }
 
-    </View>
+    </View >
   );
 }
 
@@ -185,6 +207,13 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     padding: 10,
     borderRadius: 8,
+    marginBottom: 8,
+  },
+  locationDescription: {
+    backgroundColor: "f8fafc",
+    padding: 10,
+    paddingLeft: 15,
+    paddingTop: 2,
     marginBottom: 8,
   },
   checkbox: {
