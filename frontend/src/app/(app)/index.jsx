@@ -1,24 +1,39 @@
 import { View, Text, Pressable, StyleSheet, ScrollView } from "react-native";
 import { useAuth } from "../../../context/Auth";
-import MapView from "react-native-maps";
+import MapView, { Marker } from "react-native-maps";
 import { useLocations } from "../../../hooks/useLocations";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Checkbox from "expo-checkbox";
 import { isOpenNow } from "../../../lib/openingHours";
 import { router } from "expo-router";
-
 
 export default function HomeScreen() {
   const { user, logout } = useAuth();
   const { locations, loading, error, fetchLocations } = useLocations();
   const [openNowOnly, setOpenNowOnly] = useState(false);
   const [selectedCategories, setSelectedCategories] = useState([]);
-  const [expandedLocation, setExpandedLocation] = useState(null);
+  const [expandedLocationId, setExpandedLocationId] = useState(null);
+
+  const mapRef = useRef(null);
 
   useEffect(() => {
     fetchLocations(openNowOnly);
   }, []);
+
+  const expandedLocation = locations.find((location) => {
+    return location.id === expandedLocationId;
+  })
+
+  useEffect(() => {
+    if (!expandedLocation) return;
+    mapRef.current?.animateToRegion({
+      latitude: expandedLocation.location?.latitude,
+      longitude: expandedLocation.location?.longitude,
+      latitudeDelta: 0.005,
+      longitudeDelta: 0.005,
+    }, 500)
+  }, [expandedLocation])
+
 
   const toggleCategories = (category) => {
     setSelectedCategories((prev) => {
@@ -31,10 +46,10 @@ export default function HomeScreen() {
   }
 
   const toggleLocations = (location) => {
-    if (expandedLocation === location.id) {
-      setExpandedLocation(null);
+    if (expandedLocationId === location.id) {
+      setExpandedLocationId(null);
     } else {
-      setExpandedLocation(location.id);
+      setExpandedLocationId(location.id);
     }
   }
 
@@ -65,6 +80,7 @@ export default function HomeScreen() {
       <Text style={styles.sectionTitle}>Map</Text>
 
       <MapView
+        ref={mapRef}
         style={styles.map}
         initialRegion={{
           latitude: 1.2966,
@@ -73,7 +89,13 @@ export default function HomeScreen() {
           longitudeDelta: 0.01,
         }}
       >
-
+        {expandedLocation && <Marker
+          coordinate={{
+            latitude: expandedLocation.location.latitude,
+            longitude: expandedLocation.location.longitude,
+          }}
+          title={expandedLocation.name}
+        />}
       </MapView>
 
       <Text style={styles.sectionTitle}>Locations: </Text>
@@ -105,7 +127,6 @@ export default function HomeScreen() {
           />
           <Text style={styles.label}>Study</Text>
         </View>
-
       </View>
 
       {loading && <Text style={styles.message}>Loading locations</Text>}
@@ -116,9 +137,10 @@ export default function HomeScreen() {
       ) : (
         <ScrollView style={styles.locationList}>
           {filteredLocations.map((location) => {
-            const isExpanded = expandedLocation === location.id;
+            const isExpanded = expandedLocationId === location.id;
             return (
               <Pressable
+                key={location.id}
                 onPress={() => toggleLocations(location)}
               >
                 <Text style={styles.locationItem}>
