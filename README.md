@@ -1,6 +1,5 @@
 # Campus Crawlers
-
-**Orbital 26 Milestone 1 README**  
+  
 **Team Name:** Campus Crawlers  
 **Team ID:** 7582  
 **Team Members:** Lee Chia Yun, Shwe Yati Oo  
