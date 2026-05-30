@@ -47,6 +47,8 @@ export default function SignUpScreen() {
 
     return (
         <View style={styles.container}>
+            <Text style={styles.name}> Campus Crawler </Text>
+
             <Text style={styles.title}>Create account</Text>
             <Text style={styles.subtitle}>Join Campus Crawlers</Text>
 
@@ -104,6 +106,14 @@ const styles = StyleSheet.create({
         backgroundColor: "#07111f",
         padding: 24,
         justifyContent: "center",
+    },
+    name: {
+        position: "absolute",
+        top: 30,
+        left: 20,
+        color: "white",
+        fontSize: 26,
+        fontWeight: "700",
     },
     title: {
         color: "white",

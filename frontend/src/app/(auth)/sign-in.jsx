@@ -36,6 +36,8 @@ export default function SignInScreen() {
 
     return (
         <View style={styles.container}>
+            <Text style={styles.name}> Campus Crawler </Text>
+
             <Text style={styles.title}>Welcome back</Text>
             <Text style={styles.subtitle}>Sign in to continue to Campus Crawlers</Text>
 
@@ -90,6 +92,14 @@ const styles = StyleSheet.create({
         fontSize: 32,
         fontWeight: "700",
         marginBottom: 8,
+    },
+    name: {
+        position: "absolute",
+        top: 30,
+        left: 20,
+        color: "white",
+        fontSize: 26,
+        fontWeight: "700",
     },
     subtitle: {
         color: "#9ca3af",
