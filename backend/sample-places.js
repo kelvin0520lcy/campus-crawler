@@ -3,7 +3,7 @@ export const samplePlaces = [
         id: "fine-food",
         name: "Fine Food",
         category: "food",
-        description: "Utown food court",
+        description: "A convenient UTown food court with a variety of affordable meal options, suitable for students looking for a quick lunch, dinner, or takeaway between classes.",
         location: {
             latitude: 1.3040525860503667,
             longitude: 103.77355047235173,
@@ -23,7 +23,7 @@ export const samplePlaces = [
         id: "central-library",
         name: "Central Library",
         category: "study",
-        description: "Main library study space in NUS.",
+        description: "One of the main study locations in NUS, offering quiet spaces for reading, revision, and focused work. A useful option for students who prefer a library environment.",
         location: {
             latitude: 1.2965436416575085,
             longitude: 103.77316770177995,
@@ -43,7 +43,7 @@ export const samplePlaces = [
         id: "flavours",
         name: "Flavours",
         category: "food",
-        description: "Canteen in UTown",
+        description: "A popular UTown canteen located near student residences and study areas. Good for students staying around UTown who want nearby food options throughout the day.",
         location: {
             latitude: 1.304401780930515,
             longitude: 103.77298236818034,
@@ -63,7 +63,7 @@ export const samplePlaces = [
         id: "the-terrace",
         name: "The Terrace",
         category: "food",
-        description: "Canteen in School of Computing",
+        description: "A canteen near the School of Computing, useful for SoC students who want a quick meal without walking far from COM buildings. Best suited for weekday meals.",
         location: {
             latitude: 1.2943847945750535,
             longitude: 103.77434064940101,
@@ -83,7 +83,7 @@ export const samplePlaces = [
         id: "the-deck",
         name: "The Deck",
         category: "food",
-        description: "Canteen near Faculty of Arts and Social Sciences.",
+        description: "A canteen located near the Faculty of Arts and Social Sciences, serving as a convenient food spot for students around the Central Library and FASS area.",
         location: {
             latitude: 1.2944249181062506,
             longitude: 103.77256145141628,
