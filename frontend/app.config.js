@@ -16,6 +16,11 @@ export default {
             "eas": {
                 "projectId": "389dd8e4-f151-4b6c-b91f-ba027c459ac6"
             }
-        }
+        },
+
+        "plugins": [
+            "expo-router"
+        ]
+
     },
 };
