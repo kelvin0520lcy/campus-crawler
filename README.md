@@ -18,7 +18,7 @@ For instructions on how to run and access the app, please refer to [Section 5.3:
 
   * [4.1 Core Features](#41-core-features)
   * [4.2 Planned Extension Features](#42-planned-extension-features)
-* [5. Scope and Progress](#5-milestone-1-scope-and-progress)
+* [5. Scope and Progress](#5-current-progress)
 
   * [5.1 Completed Work](#51-completed-work)
   * [5.2 Technical Proof of Concept](#52-technical-proof-of-concept)
@@ -47,8 +47,6 @@ For instructions on how to run and access the app, please refer to [Section 5.3:
 Campus Crawlers is a mobile application that helps NUS students find campus locations that are currently open, such as food places, study spaces, cafés, canteens, and other useful facilities. The app combines a location list, category filters, opening status, expandable details, and an interactive map so that users can decide where to go before physically walking there.
 
 The main problem we are solving is uncertainty. Students often want to study or eat somewhere on campus, especially during weekends, late evenings, public holidays, or less busy periods, but they may not know whether a specific place or stall is open. Campus Crawlers aims to reduce wasted trips by giving students a quick way to check available places and view their location on a map.
-
-For Milestone 1, we focused on building a technical proof of concept rather than a complete final product. Our goal was to prove that the main technical components can work together: a React Native frontend, an Express backend, Firebase Authentication, Firestore location data, and a map interface.
 
 ---
 
@@ -118,9 +116,7 @@ Firebase Authentication is used for basic sign-up and sign-in. This prepares the
 
 ---
 
-## 5. Milestone 1 Scope and Progress
-
-For Milestone 1, the main goal is to complete a technical proof of concept. The project is not expected to be fully polished yet. Instead, our focus is to show that the main system architecture is feasible and that the core components can communicate with each other.
+## 5. Current Progress
 
 ### 5.1 Completed Work
 
@@ -352,7 +348,7 @@ Locations, Opening Hours, Tags
 ### 7.2 Main Components
 
 **Frontend**  
-The frontend displays authentication screens, the homepage, map view, location list, filters, account page, and expandable location details. It uses React state and a custom `useLocations` hook to manage location data.
+The frontend displays authentication screens, the homepage, map view, location list, filters, account page, and expandable location details.
 
 **Authentication**  
 Firebase Authentication handles sign-up, sign-in, logout, and user session state. Authentication is important because future features such as bookmarks and user reports require a reliable user identity.
@@ -376,22 +372,24 @@ Example Firestore document:
 
 ```js
 locations/{locationId} = {
-  name: "Frontier Canteen",
-  category: "food",
-  description: "Canteen near Faculty of Science",
+  name: "Central Library",
+  category: "study",
+  description: "One of the main study locations in NUS, offering quiet spaces for reading, revision, and focused work. A useful option for students who prefer a library environment.",
   location: {
-    latitude: 1.2966,
-    longitude: 103.7764
+      latitude: 1.2965436416575085,
+      longitude: 103.77316770177995,
   },
   openingHours: {
-    monday: [{ open: "08:00", close: "20:00" }],
-    tuesday: [{ open: "08:00", close: "20:00" }],
-    saturday: [{ open: "10:00", close: "15:00" }]
+      monday: [{ open: "09:00", close: "21:00" }],
+      tuesday: [{ open: "09:00", close: "21:00" }],
+      wednesday: [{ open: "09:00", close: "21:00" }],
+      thursday: [{ open: "09:00", close: "21:00" }],
+      friday: [{ open: "09:00", close: "21:00" }],
+      saturday: [{ open: "09:00", close: "21:00" }],
+      sunday: [],
   },
-  tags: ["food", "canteen", "weekend"],
-  createdAt: timestamp,
-  updatedAt: timestamp
-}
+  tags: ["study", "library"],
+},
 ```
 
 The document ID is used as the location ID. This makes it easier to fetch one specific location through the backend using `/api/locations/:id`.
@@ -417,7 +415,7 @@ The document ID is used as the location ID. This makes it easier to fetch one sp
 ---
 ## 9. Testing
 
-For Milestone 1, testing is mainly manual because the focus is on verifying the technical proof of concept. Automated tests will be added in later milestones after the core feature structure becomes more stable.
+For now, testing is mainly manual. Automated tests will be added in later milestones after the core feature structure becomes more stable.
 
 ### 9.1 Current Manual Testing
 
@@ -436,7 +434,7 @@ For Milestone 1, testing is mainly manual because the focus is on verifying the 
 
 ### 9.2 Future Testing Plan
 
-For Milestone 2 and Milestone 3, we plan to add:
+In the future, we plan to add:
 
 - Unit tests for opening-hour and filtering logic.
 - Integration tests for backend API endpoints.
