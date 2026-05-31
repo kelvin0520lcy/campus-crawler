@@ -234,6 +234,8 @@ For setting up Expo Go or an emulator/simulator, please refer to the official Ex
 * **macOS:** Please refer to the [Expo iOS Simulator guide](https://docs.expo.dev/workflow/ios-simulator/) to set up and run the app on an iOS Simulator.
 * **Physical device:** Please refer to the [Expo Go page](https://expo.dev/go) to install Expo Go on your Android or iOS device.
 
+**Note:** The map feature is best tested on an iOS Simulator or iOS device using Expo Go, where Apple Maps works by default. On Android, `react-native-maps` uses Google Maps and may require a configured Google Maps API key in a custom development build. Therefore, the Android map may not display correctly in Expo Go.
+
 #### 5.3.4 Accessing the App
 
 Once the mobile app is opened, the user can access the proof of concept through the following steps:
