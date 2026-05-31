@@ -247,7 +247,7 @@ Optional development builds are also provided for users who want to test the app
 
   1. Open the Android development build link above.
   2. Download the `.apk` file from the EAS build page.
-  3. Install the `.apk` on an Android device or Android Emulator.
+  3. Install the `.apk` on an Android device or drag it to the Android Emulator.
   4. If installing on a physical Android device, allow installation from the browser or file manager if prompted.
   5. After installation, start the development server from the project folder:
 
