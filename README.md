@@ -230,11 +230,29 @@ After Expo starts, the app can be opened using an iOS Simulator, Android Emulato
 
 For setting up Expo Go or an emulator/simulator, please refer to the official Expo guides below:
 
-* **Windows:** Please refer to the [Expo Android Studio Emulator guide](https://docs.expo.dev/workflow/android-studio-emulator/) to set up and run the app on an Android Emulator.
+* **Windows:** Please refer to the [Expo Android Studio Emulator guide](https://expo.dev/accounts/kelvinlee10/projects/campus-crawler/builds/b6a6ac66-9431-41) to set up and run the app on an Android Emulator.
 * **macOS:** Please refer to the [Expo iOS Simulator guide](https://docs.expo.dev/workflow/ios-simulator/) to set up and run the app on an iOS Simulator.
 * **Physical device:** Please refer to the [Expo Go page](https://expo.dev/go) to install Expo Go on your Android or iOS device.
 
 **Note:** The map feature is best tested on an iOS Simulator or iOS device using Expo Go, where Apple Maps works by default. On Android, `react-native-maps` uses Google Maps and may require a configured Google Maps API key in a custom development build. Therefore, the Android map may not display correctly in Expo Go.
+
+##### Optional Development Builds
+
+Optional development builds are also provided for users who want to test the app with a custom native build instead of Expo Go.
+
+* **Android Development Build:** [Download Android development build](https://expo.dev/accounts/kelvinlee10/projects/campus-crawler/builds/317432e3-8d98-4c77-9355-804ba4cb3462)
+  This build can be installed on an Android device or Android Emulator. It is useful for testing Android native map behavior with Google Maps.
+
+* **iOS Simulator Development Build:** [Download iOS Simulator development build](https://expo.dev/accounts/kelvinlee10/projects/campus-crawler/builds/522b375b-09b0-4d78-8a72-bce19d6bd917)
+  This build is only for macOS users with Xcode and iOS Simulator installed. It cannot be installed on a physical iPhone. To use it, open the build link and install it into the iOS Simulator, for example using Expo Orbit or the EAS build page.
+
+To run the app with a development build, start the development server using:
+
+```bash
+npx expo start --dev-client
+```
+
+Then open the installed Campus Crawler development build on the Android device/emulator or iOS Simulator.
 
 #### 5.3.4 Accessing the App
 

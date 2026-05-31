@@ -1,11 +1,12 @@
 import { View, Text, Pressable, StyleSheet, ScrollView } from "react-native";
 import { useAuth } from "../../../context/Auth";
-import MapView, { Marker } from "react-native-maps";
+import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
 import { useLocations } from "../../../hooks/useLocations";
 import { useEffect, useState, useRef } from "react";
 import Checkbox from "expo-checkbox";
 import { isOpenNow } from "../../../lib/openingHours";
 import { router } from "expo-router";
+import { Platform } from "react-native";
 
 export default function HomeScreen() {
   const { user, logout } = useAuth();
@@ -80,6 +81,7 @@ export default function HomeScreen() {
       <Text style={styles.sectionTitle}>Map</Text>
 
       <MapView
+        provider={Platform.OS === "android" ? PROVIDER_GOOGLE : undefined}
         ref={mapRef}
         style={styles.map}
         initialRegion={{
