@@ -237,7 +237,6 @@ For setting up Expo Go or an emulator/simulator, please refer to the official Ex
 **Note:** The map feature is best tested on an iOS Simulator or iOS device using Expo Go, where Apple Maps works by default. On Android, `react-native-maps` uses Google Maps and may require a configured Google Maps API key in a custom development build. Therefore, the Android map may not display correctly in Expo Go.
 
 ##### Optional Development Builds
-##### Optional Development Builds
 
 Optional development builds are also provided for users who want to test the app with a custom native build instead of Expo Go.
 
