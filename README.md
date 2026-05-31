@@ -151,13 +151,29 @@ The current proof of concept demonstrates this flow:
 
 ### 5.3 Running and Accessing the Application
 
-For Milestone 1, the backend server has already been deployed on Render. Therefore, the evaluator does not need to run the backend locally in order to test the main proof of concept. The mobile frontend is configured to communicate with the deployed backend, which then retrieves campus location data from Firestore.
+For Milestone 1, the backend server has already been deployed on Render. Therefore, the evaluator does not need to run the backend locally in order to test the main proof of concept. The mobile frontend is configured to communicate with the deployed backend, which retrieves campus location data from Firestore.
 
-Note: The backend server is hosted on Render and may go to sleep after a period of inactivity. If the app does not fetch location data immediately, please wait for a short while and try again, as the server may need some time to restart.
+#### 5.3.1 Downloading the Project
 
-### Backend Access
+To run the app locally, first download the project from the GitHub repository.
 
-The backend is hosted on Render. 
+1. Go to the project repository:
+
+```text
+https://github.com/kelvin0520lcy/campus-crawler.git
+```
+
+2. Click the green **Code** button.
+
+3. Select **Download ZIP**.
+
+4. After the ZIP file is downloaded, extract it to a folder on your computer.
+
+5. Open a terminal in the extracted project folder.
+
+#### 5.3.2 Backend Access
+
+The backend is hosted on Render.
 
 ```text
 Deployed backend URL: https://campus-crawler.onrender.com
@@ -177,7 +193,9 @@ GET https://campus-crawler.onrender.com/api/locations
 
 This endpoint retrieves the sample campus locations stored in Firestore and returns them to the mobile app.
 
-### Frontend Setup
+**Note:** The backend server is hosted on Render and may go to sleep after a period of inactivity. If the app does not fetch location data immediately, please wait for a short while and try again, as the server may need some time to restart.
+
+#### 5.3.3 Frontend Setup
 
 To run the mobile frontend locally, navigate to the frontend folder and install the required dependencies:
 
@@ -192,15 +210,15 @@ Then start the Expo development server:
 npx expo start
 ```
 
-After Expo starts, the app can be opened using an iOS simulator, Android emulator, or a physical device with Expo Go.
+After Expo starts, the app can be opened using an iOS Simulator, Android Emulator, or a physical device with Expo Go.
 
 For setting up Expo Go or an emulator/simulator, please refer to the official Expo guides below:
 
-- **Windows:** Please refer to the [Expo Android Studio Emulator guide](https://docs.expo.dev/workflow/android-studio-emulator/) to set up and run the app on an Android Emulator.
-- **macOS:** Please refer to the [Expo iOS Simulator guide](https://docs.expo.dev/workflow/ios-simulator/) to set up and run the app on an iOS Simulator.
-- **Physical device:** Please refer to the [Expo Go page](https://expo.dev/go) to install Expo Go on your Android or iOS device.
+* **Windows:** Please refer to the [Expo Android Studio Emulator guide](https://docs.expo.dev/workflow/android-studio-emulator/) to set up and run the app on an Android Emulator.
+* **macOS:** Please refer to the [Expo iOS Simulator guide](https://docs.expo.dev/workflow/ios-simulator/) to set up and run the app on an iOS Simulator.
+* **Physical device:** Please refer to the [Expo Go page](https://expo.dev/go) to install Expo Go on your Android or iOS device.
 
-### Accessing the App
+#### 5.3.4 Accessing the App
 
 Once the mobile app is opened, the user can access the proof of concept through the following steps:
 
