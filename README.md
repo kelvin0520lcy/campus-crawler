@@ -240,10 +240,10 @@ For setting up Expo Go or an emulator/simulator, please refer to the official Ex
 
 Optional development builds are also provided for users who want to test the app with a custom native build instead of Expo Go.
 
-* **Android Development Build:** [Download Android development build](https://expo.dev/accounts/kelvinlee10/projects/campus-crawler/builds/317432e3-8d98-4c77-9355-804ba4cb3462)
+* **Android Development Build:** [Download Android development build](https://expo.dev/accounts/kelvinlee10/projects/campus-crawler/builds/317432e3-8d98-4c77-9355-804ba4cb3462). 
   This build can be installed on an Android device or Android Emulator. It is useful for testing Android native map behavior with Google Maps.
 
-* **iOS Simulator Development Build:** [Download iOS Simulator development build](https://expo.dev/accounts/kelvinlee10/projects/campus-crawler/builds/522b375b-09b0-4d78-8a72-bce19d6bd917)
+* **iOS Simulator Development Build:** [Download iOS Simulator development build](https://expo.dev/accounts/kelvinlee10/projects/campus-crawler/builds/522b375b-09b0-4d78-8a72-bce19d6bd917). 
   This build is only for macOS users with Xcode and iOS Simulator installed. It cannot be installed on a physical iPhone. To use it, open the build link and install it into the iOS Simulator, for example using Expo Orbit or the EAS build page.
 
 To run the app with a development build, start the development server using:
