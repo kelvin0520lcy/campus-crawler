@@ -7,6 +7,39 @@
 **Repository:** `https://github.com/kelvin0520lcy/campus-crawler.git`
 ---
 
+## Index
+
+* [1. Project Overview](#1-project-overview)
+* [2. Problem Motivation and Target Users](#2-problem-motivation-and-target-users)
+* [3. User Stories](#3-user-stories)
+* [4. Features](#4-features)
+
+  * [4.1 Core Features](#41-core-features)
+  * [4.2 Planned Extension Features](#42-planned-extension-features)
+* [5. Scope and Progress](#5-milestone-1-scope-and-progress)
+
+  * [5.1 Completed Work](#51-completed-work)
+  * [5.2 Technical Proof of Concept](#52-technical-proof-of-concept)
+  * [5.3 Running and Accessing the Application](#53-running-and-accessing-the-application)
+  * [5.4 Not Yet Completed](#54-not-yet-completed)
+* [6. Tech Stack](#6-tech-stack)
+* [7. System Design](#7-system-design)
+
+  * [7.1 High-Level Architecture](#71-high-level-architecture)
+  * [7.2 Main Components](#72-main-components)
+* [8. Data Model and API Design](#8-data-model-and-api-design)
+
+  * [8.1 Location Data Model](#81-location-data-model)
+  * [8.2 Current API Endpoints](#82-current-api-endpoints)
+  * [8.3 Planned API Endpoints](#83-planned-api-endpoints)
+* [9. Testing](#9-testing)
+
+  * [9.1 Current Manual Testing](#91-current-manual-testing)
+  * [9.2 Future Testing Plan](#92-future-testing-plan)
+* [10. Development Plan](#10-development-plan)
+* [11. Future Improvements](#11-future-improvements)
+
+
 ## 1. Project Overview
 
 Campus Crawlers is a mobile application that helps NUS students find campus locations that are currently open, such as food places, study spaces, cafés, canteens, and other useful facilities. The app combines a location list, category filters, opening status, expandable details, and an interactive map so that users can decide where to go before physically walking there.
