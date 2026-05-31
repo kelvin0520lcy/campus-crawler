@@ -21,7 +21,6 @@
   * [5.1 Completed Work](#51-completed-work)
   * [5.2 Technical Proof of Concept](#52-technical-proof-of-concept)
   * [5.3 Running and Accessing the Application](#53-running-and-accessing-the-application)
-  * [5.4 Not Yet Completed](#54-not-yet-completed)
 * [6. Tech Stack](#6-tech-stack)
 * [7. System Design](#7-system-design)
 
@@ -325,11 +324,11 @@ The document ID is used as the location ID. This makes it easier to fetch one sp
 | POST | `/api/reviews` | Submit a rating or review. |
 
 ---
-## 10. Testing
+## 9. Testing
 
 For Milestone 1, testing is mainly manual because the focus is on verifying the technical proof of concept. Automated tests will be added in later milestones after the core feature structure becomes more stable.
 
-### 10.1 Current Manual Testing
+### 9.1 Current Manual Testing
 
 | Test Area | Test Case | Expected Result |
 |---|---|---|
@@ -344,7 +343,7 @@ For Milestone 1, testing is mainly manual because the focus is on verifying the 
 | Map | Select a location. | Marker appears or moves on the map. |
 | UI | Expand a location. | Description is shown correctly. |
 
-### 10.2 Future Testing Plan
+### 9.2 Future Testing Plan
 
 For Milestone 2 and Milestone 3, we plan to add:
 
@@ -356,7 +355,7 @@ For Milestone 2 and Milestone 3, we plan to add:
 
 ---
 
-## 11. Development Plan
+## 10. Development Plan
 
 ### Milestone 1: Ideation and Technical Proof of Concept
 
@@ -392,7 +391,7 @@ For Milestone 2 and Milestone 3, we plan to add:
 
 ---
 
-## 13. Future Improvements
+## 11. Future Improvements
 
 The most important next step is to turn the proof of concept into a more complete prototype. This means improving both the dataset and the user experience. We plan to add more NUS locations, support more accurate opening-hour logic, improve the map interface, and build stronger filtering features.
 
