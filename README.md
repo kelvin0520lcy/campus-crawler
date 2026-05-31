@@ -167,11 +167,13 @@ https://github.com/kelvin0520lcy/campus-crawler.git
 
 3. Select **Download ZIP**.
 
+![Download zip file from git repo](./assets/github_download_zip.png)
+
 4. After the ZIP file is downloaded, extract it to a folder on your computer.
 
 5. Open a terminal in the extracted project folder.
 
-![Download zip file from git repo](./assets/github_download_zip.png)
+![Open folder in terminal](./assets/open_in_terminal.png)
 
 #### 5.3.2 Backend Access
 
