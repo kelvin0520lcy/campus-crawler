@@ -171,6 +171,8 @@ https://github.com/kelvin0520lcy/campus-crawler.git
 
 5. Open a terminal in the extracted project folder.
 
+![Download zip file from git repo](./assets/github_download_zip.png)
+
 #### 5.3.2 Backend Access
 
 The backend is hosted on Render.
@@ -204,13 +206,25 @@ cd frontend
 npm install
 ```
 
-Then start the Expo development server:
+Before running the frontend, create a `.env` file inside the `frontend` folder.
+
+You can copy the provided example file:
 
 ```bash
-npx expo start
+cp .env.example .env
 ```
 
+Then start the frontend on Expo go:
+
+```bash
+npx expo start --go
+```
+
+![Build and start frontend on expo go](./assets/frontend_build.png)
+
 After Expo starts, the app can be opened using an iOS Simulator, Android Emulator, or a physical device with Expo Go.
+
+![App running on iOS Simulator](./assets/campus_crawler_auth.png)
 
 For setting up Expo Go or an emulator/simulator, please refer to the official Expo guides below:
 
@@ -229,6 +243,8 @@ Once the mobile app is opened, the user can access the proof of concept through 
 5. Users can filter locations by category or open-now availability.
 6. Users can tap a location from the list to show its marker on the map.
 7. Users can expand a location card to view its description and additional details.
+
+![Campus Crawler Home Screen after authentication](./assets/campus_crawler_home.png)
 
 ### 5.4 Not Yet Completed
 
