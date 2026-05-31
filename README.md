@@ -7,6 +7,8 @@
 **Repository:** `https://github.com/kelvin0520lcy/campus-crawler.git`
 ---
 
+For instructions on how to run and access the app, please refer to [Section 5.3: Running and Accessing the Application](#53-running-and-accessing-the-application).
+
 ## Index
 
 * [1. Project Overview](#1-project-overview)
@@ -21,6 +23,7 @@
   * [5.1 Completed Work](#51-completed-work)
   * [5.2 Technical Proof of Concept](#52-technical-proof-of-concept)
   * [5.3 Running and Accessing the Application](#53-running-and-accessing-the-application)
+  * [5.4 Not Yet Completed](#54-not-yet-completed)
 * [6. Tech Stack](#6-tech-stack)
 * [7. System Design](#7-system-design)
 
@@ -150,9 +153,11 @@ The current proof of concept demonstrates this flow:
 
 For Milestone 1, the backend server has already been deployed on Render. Therefore, the evaluator does not need to run the backend locally in order to test the main proof of concept. The mobile frontend is configured to communicate with the deployed backend, which then retrieves campus location data from Firestore.
 
+Note: The backend server is hosted on Render and may go to sleep after a period of inactivity. If the app does not fetch location data immediately, please wait for a short while and try again, as the server may need some time to restart.
+
 ### Backend Access
 
-The backend is hosted on Render.
+The backend is hosted on Render. 
 
 ```text
 Deployed backend URL: https://campus-crawler.onrender.com
@@ -189,6 +194,12 @@ npx expo start
 
 After Expo starts, the app can be opened using an iOS simulator, Android emulator, or a physical device with Expo Go.
 
+For setting up Expo Go or an emulator/simulator, please refer to the official Expo guides below:
+
+- **Windows:** Please refer to the [Expo Android Studio Emulator guide](https://docs.expo.dev/workflow/android-studio-emulator/) to set up and run the app on an Android Emulator.
+- **macOS:** Please refer to the [Expo iOS Simulator guide](https://docs.expo.dev/workflow/ios-simulator/) to set up and run the app on an iOS Simulator.
+- **Physical device:** Please refer to the [Expo Go page](https://expo.dev/go) to install Expo Go on your Android or iOS device.
+
 ### Accessing the App
 
 Once the mobile app is opened, the user can access the proof of concept through the following steps:
@@ -201,7 +212,7 @@ Once the mobile app is opened, the user can access the proof of concept through 
 6. Users can tap a location from the list to show its marker on the map.
 7. Users can expand a location card to view its description and additional details.
 
-### 5.3 Not Yet Completed
+### 5.4 Not Yet Completed
 
 The following features are planned for later milestones:
 
